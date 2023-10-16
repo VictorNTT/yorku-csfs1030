@@ -1,0 +1,28 @@
+Dockerfile to setup 2 images: mysql & adminer
+This is intended as an excercise and NOT reconmmended for a Production environment!
+Date: Oct 15, 2023
+
+Start containers (make sure docker desktop, or dockerd, is running first)
+$ docker-compose up -d
+Check containers up running 
+$ docker ps
+Stop container 
+$ docker stop adminer mysql
+Remove container 
+$ docker rm adminer mysql
+
+$ docker-compose down      this will stop and remove containers
+
+Test site when image is running via: localhost:8080
+Enter the id, pwd and db name as below in 'db > mysql' section
+Create a SQL table, Table1: 
+	CREATE TABLE Table1 (ID INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(50) NOT NULL);
+Insert some data into Table1:
+	INSERT INTO Table1 (Name) VALUES ('Joe'),('Mary');
+	SELECT * FROM Table1;
+
+
+Navigage in Docker's container, eg. mysql,  using bash
+$ docker exec -it mysql bash
+
+Now you can issue unix commands, e.g cd, ls -l, pwd ...
