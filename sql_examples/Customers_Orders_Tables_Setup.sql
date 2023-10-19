@@ -1,0 +1,32 @@
+DROP TABLE IF EXISTS ORDERS;
+CREATE TABLE ORDERS (
+	ID INT NOT NULL PRIMARY KEY,
+    CUST_ID INT NOT NULL,
+    ORDER_DESC VARCHAR (50) NOT NULL
+);
+
+DROP TABLE IF EXISTS CUSTOMERS;
+CREATE TABLE CUSTOMERS (
+	ID INT NOT NULL PRIMARY KEY,    
+    FNAME VARCHAR (50) NOT NULL,
+    LNAME VARCHAR (50) NOT NULL
+);
+
+INSERT INTO CUSTOMERS VALUES 
+(1, 'Joe', 'Johnson')
+,(2, 'Bob', 'Wang')
+,(3, 'Tina', 'Shin')
+,(4, 'Zoey', 'Park')
+;
+
+INSERT INTO ORDERS VALUES
+ (1, 1, 'The Green Gabble Book')
+,(2, 1, 'Coffee Mug')
+,(3, 1, 'Large Hat')
+,(4, 2, 'Red Shoes')
+,(5, 4, 'Wine Glass')
+,(6, -1, 'Faulty Product')
+;
+
+SELECT * FROM ORDERS;
+SELECT * FROM CUSTOMERS;
