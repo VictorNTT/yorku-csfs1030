@@ -32,9 +32,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       # When container is first created, this database and superuser are created
-      MYSQL_DATABASE: yorku_csfs1030
-      MYSQL_USER: csfs1030
-      MYSQL_PASSWORD: csfs1030
+      MYSQL_DATABASE: csfs1030_db
+      MYSQL_USER: csfs1030_user
+      MYSQL_PASSWORD: csfs1030_pwd
     ports:
       - 3308:3306
     volumes:
