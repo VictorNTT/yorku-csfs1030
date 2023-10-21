@@ -1,0 +1,26 @@
+
+MySQL environment
+---------------------
+Check out the configuration file: C:\ProgramData\MySQL\MySQL Server 8.0\my.ini 
+
+-- Upload folder: 
+$SELECT @@GLOBAL.secure_file_priv;  
+	C:\ProgramData\MySQL\MySQL Server 8.0\Uploads\
+	
+-- Note: in SQL command, use forward slash for the path
+
+-- Show all global varibles:
+$ SHOW GLOBAL VARIABLES;
+$ SHOW SESSION VARIAB;
+
+$ SHOW GLOBAL VARIABLES LIKE '%tmp%;
+
+mysql> show global variables like '%tmpdir%';
++---------------------+-------------------------------------------------+
+| Variable_name       | Value                                           |
++---------------------+-------------------------------------------------+
+| innodb_tmpdir       |                                                 |
+| replica_load_tmpdir | C:\windows\SERVIC~1\NETWOR~1\AppData\Local\Temp |
+| slave_load_tmpdir   | C:\windows\SERVIC~1\NETWOR~1\AppData\Local\Temp |
+| tmpdir              | C:\windows\SERVIC~1\NETWOR~1\AppData\Local\Temp |
++---------------------+-------------------------------------------------+
