@@ -1,0 +1,32 @@
+Running a MySQL server & a web app running within a Docker container:
+
+1. Install Docker Desktop for Windows. 
+	a) Enable Virtualization:  https://docs.docker.com/desktop/troubleshoot/topics/#virtualization
+	b) Install Docker https://docs.docker.com/desktop/install/windows-install/
+
+2. Start Docker Desktop
+3. Ensure Docker compose is installed: 
+	docker-compose -v 
+4. Clone the course's repository on your computer
+	a) Ensure you have installed git first
+	b) Clone a new repository to your work directory e.g C:\dev
+	   $ git clone https://github.com/VictorNTT/yorku-csfs1030.git	
+	
+
+5. Start docker container
+	$ cd c:\dev\yorku-csfs1030\docker-mysql-adminer
+	$ docker-compose up -d
+	
+6. Verify two containers have been created and running: 
+ $ docker ps
+ 
+  
+ If the connection is successful, log out and repeat with:
+(info is the same in docker-compose.yml file) 
+a. Server: db 
+b. Username: csfs1030 
+c. Password: csfs1030 
+d. Database: yorku_csfs1030
+
+Setup Job Board DB using yorku-csfs1030\sql_examples\Job_Board_Setup.sql
+(or https://github.com/VictorNTT/yorku-csfs1030/blob/main/sql_examples/Job_Board_Setup.sql)
