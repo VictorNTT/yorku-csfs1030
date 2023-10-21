@@ -1,0 +1,7 @@
+# change the properties below as per your environment
+connection:
+  host: 'localhost'
+  database: 'world' 
+  user: 'user1'
+  password: 'user1'
+  raise_on_warnings: True
