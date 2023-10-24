@@ -24,3 +24,7 @@ mysql> show global variables like '%tmpdir%';
 | slave_load_tmpdir   | C:\windows\SERVIC~1\NETWOR~1\AppData\Local\Temp |
 | tmpdir              | C:\windows\SERVIC~1\NETWOR~1\AppData\Local\Temp |
 +---------------------+-------------------------------------------------+
+
+
+Data location for all DBs
+C:\ProgramData\MySQL\MySQL Server 8.0\Data\

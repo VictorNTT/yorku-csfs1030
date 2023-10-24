@@ -6,6 +6,10 @@ Start containers (make sure docker desktop, or dockerd, is running first)
 $ docker-compose up -d
 Check containers up running 
 $ docker ps
+
+Web browser access: localhost:8080
+
+
 Stop container 
 $ docker stop adminer mysql
 Remove container 
@@ -26,3 +30,11 @@ Navigage in Docker's container, eg. mysql,  using bash
 $ docker exec -it mysql bash
 
 Now you can issue unix commands, e.g cd, ls -l, pwd ...
+
+Check for host ip withn which a container is running
+$docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name or contained_id>
+$docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql-2
+'172.22.0.2' 
+
+or 
+$docker inspect contained_id
