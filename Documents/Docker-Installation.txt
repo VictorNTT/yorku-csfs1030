@@ -23,9 +23,9 @@ Running a MySQL server & a web app running within a Docker container:
 7. validate the Web App adminer is running 
  - Open a browser and type in this url: http://localhost:8080
  - log in with this info (it's the same in docker-compose.yml file) 
-   Username: csfs1030 
-   Password: csfs1030 
-   Database: yorku_csfs1030
+   Username: csfs1030_user
+   Password: csfs1030_pwd 
+   Database: csfs1030_db
 
 Setup Job Board DB using yorku-csfs1030\sql_examples\Job_Board_Setup.sql
 (or https://github.com/VictorNTT/yorku-csfs1030/blob/main/sql_examples/Job_Board_Setup.sql)
