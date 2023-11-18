@@ -1,7 +1,12 @@
 
 MySQL environment
 ---------------------
+
 Check out the configuration file: C:\ProgramData\MySQL\MySQL Server 8.0\my.ini 
+
+Log in via command line:
+DOS> mysql -u root -p
+Enter Password: admin
 
 -- Upload folder: 
 $SELECT @@GLOBAL.secure_file_priv;  
