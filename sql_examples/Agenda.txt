@@ -1,0 +1,23 @@
+Agenda
+0. PPT Class 3
+1. Everything Auto
+	- System Analysis 
+	- SQL 
+		- FK - constrains - Foreign_Key_Examples.sql
+		- DB creation : Everything_Auto_DB_Setup_v3.sql
+		- SQL Functions - Class_3.sql
+			- Aggregated 
+			- Joins
+			- Union
+		- Store Proc  - Function_StoredProcedure.sql
+		
+yorku-csfs1030\sql_examples
+	MYSQL_JOIN.pdf
+	Date_Time.sql
+	mysqldump.sql
+		
+2. Job Boards Exercises 
+
+3. Project requirements 
+- Progress
+- Expectation for Presentation 
