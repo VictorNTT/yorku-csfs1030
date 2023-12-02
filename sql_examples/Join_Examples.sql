@@ -19,3 +19,5 @@ SELECT c.FNAME, c.LNAME, o.ORDER_DESC FROM ORDERS o CROSS JOIN CUSTOMERS c WHERE
 select 'Shopper of the month' as AWARD,  c.FNAME, c.LNAME, MAX(ORDER_COUNT) ORDER_COUNT from  
 	(Select CUST_ID,  COUNT(CUST_ID) as ORDER_COUNT from ORDERS group by CUST_ID) as oc, CUSTOMERS c
     where c.ID = oc.CUST_ID;
+	
+	
