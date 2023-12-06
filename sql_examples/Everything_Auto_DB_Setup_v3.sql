@@ -135,32 +135,81 @@ insert into contact (cust_id, contact_type, address, city, prov, postalcode, cou
 (20,'R', '20 Bloor St E', 'Saskatoon', 'SK', 'V1V 1V1', 'Canada', '416-373-3224', 'Cell');
 select * from contact;
 
+drop table if exists department;
+create table department (
+	id int auto_increment primary key,
+    name varchar(50) not null
+);
+
+delete from department;
+alter table department auto_increment = 1;
+insert into department (name) values ('Sales'), ('Finance'), ('Administrative');
+select * from department;
+
 drop table if exists personnel;
 create table personnel (
 	id int auto_increment primary key,
     first_name varchar(50) not null, 
     last_name varchar(50) not null, 
     phone varchar(15) not null, 
-    email varchar(50) not null,   	
+    email varchar(50) not null,
+    dept_id int not null,
     created_time datetime not null default current_timestamp(),
     last_updated datetime not null default current_timestamp()
+    , CONSTRAINT fk_personnel_dept_id  FOREIGN KEY  (dept_id) references department (id) ON UPDATE CASCADE ON DELETE CASCADE    
 );
+
 delete from personnel;
 alter table personnel auto_increment = 1;
-insert into personnel (first_name, last_name, phone, email) values
-('Elen','Park','416-973-2324','Elen.Park@everythingauto.com'),
-('Jason','Church','416-342-2231','Jason.Church@everythingauto.com'),
-('Dimitri','Wang','416-756-4323','Dimitri.Wang@everythingauto.com'),
-('Hooman','Kasim','416-675-0855','Hooman.Kasim@everythingauto.com'),
-('Laura','Lin','416-349-4534','Laura.Lin@everythingauto.com'),
-('Ali','Khan','416-344-9456', 'Ali.Khan@everythingauto.com'),
-('Kiatisak','Nathan','416-346-3368','Kiatisak.Nathan@everythingauto.com'),
-('Jose','Pena','416-088-5454','Jose.Pena@everythingauto.com'),
-('Geoff','Yang','416-443-342','Geoff.Yang@everythingauto.com'),
-('Hyumin','Kim','416-674-6458','Hyumin.Kim@everythingauto.com'),
-('Alena','Kosak','416-234-3462','Alena.Kosak@everythingauto.com'),
-('Erika','Valik','416-346-6763','Erika.Valik@everythingauto.com');
+insert into personnel (first_name, last_name, phone, email, dept_id) values
+('Elen','Park','416-973-2324','Elen.Park@everythingauto.com', 1),
+('Jason','Church','416-342-2231','Jason.Church@everythingauto.com', 2),
+('Dimitri','Wang','416-756-4323','Dimitri.Wang@everythingauto.com', 3),
+('Hooman','Kasim','416-675-0855','Hooman.Kasim@everythingauto.com', 1),
+('Laura','Lin','416-349-4534','Laura.Lin@everythingauto.com', 1),
+('Ali','Khan','416-344-9456', 'Ali.Khan@everythingauto.com', 1),
+('Kiatisak','Nathan','416-346-3368','Kiatisak.Nathan@everythingauto.com', 1),
+('Jose','Pena','416-088-5454','Jose.Pena@everythingauto.com', 1),
+('Geoff','Yang','416-443-342','Geoff.Yang@everythingauto.com', 1),
+('Hyumin','Kim','416-674-6458','Hyumin.Kim@everythingauto.com', 1),
+('Alena','Kosak','416-234-3462','Alena.Kosak@everythingauto.com', 2),
+('Erika','Valik','416-346-6763','Erika.Valik@everythingauto.com', 2);
 select * from personnel;
+
+drop table if exists role;
+create table role (
+	id int auto_increment primary key,
+    name varchar(50) not null      
+);
+delete from role;
+alter table role auto_increment = 1;
+insert into role (name) values ('Manager'), ('Employee'), ('SysAdmin');
+select * from role;
+
+drop table if exists pers_role;
+create table pers_role (
+	id int auto_increment primary key,
+    personnel_id int not null,
+    role_id int not null
+    , CONSTRAINT fk_pers_role_personnel_id FOREIGN KEY (personnel_id) REFERENCES personnel (id) ON UPDATE CASCADE ON DELETE CASCADE
+    , CONSTRAINT fk_pers_role_role_id FOREIGN KEY (role_id) REFERENCES role (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+delete from pers_role;
+alter table pers_role auto_increment = 1;
+insert into pers_role (personnel_id, role_id)  values
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2);
+select * from pers_role;
 
 drop table if exists store;
 create table store (
@@ -232,54 +281,6 @@ insert into payment (cust_id, method, card_number, card_first_name, card_last_na
 (19, 'MC', '1234567890123424', 'James', 'Smith', 5, 29, 433),
 (20, 'MC', '1234567890123425', 'James', 'Smith', 4, 25, 443);
 select * from payment;
-
-drop table if exists role;
-create table role (
-	id int auto_increment primary key,
-    name varchar(50) not null      
-);
-delete from role;
-alter table role auto_increment = 1;
-insert into role (name) values ('Manager'), ('Employee'), ('SysAdmin');
-select * from role;
-
-drop table if exists department;
-create table department (
-	id int auto_increment primary key,
-    name varchar(50) not null
-);
-delete from department;
-alter table department auto_increment = 1;
-insert into department (name) values ('Sales'), ('Finance'), ('Administrative');
-select * from department;
-
-drop table if exists pers_role_dept;
-create table pers_role_dept (
-	id int auto_increment primary key,
-    personnel_id int not null,
-    role_id int not null,
-    dept_id int not null
-    , CONSTRAINT fk_pers_role_dept_personnel_id FOREIGN KEY (personnel_id) REFERENCES personnel (id) ON UPDATE CASCADE ON DELETE CASCADE
-    , CONSTRAINT fk_pers_role_dept_role_id FOREIGN KEY (role_id) REFERENCES role (id) ON UPDATE CASCADE ON DELETE CASCADE
-    , CONSTRAINT fk_pers_role_dept_dept_id FOREIGN KEY (dept_id) REFERENCES department (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-delete from pers_role_dept;
-alter table pers_role_dept auto_increment = 1;
-insert into pers_role_dept (personnel_id, role_id, dept_id) values
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 2, 1),
-(5, 2, 1),
-(6, 2, 1),
-(7, 2, 1),
-(8, 2, 1),
-(9, 2, 1),
-(10, 2, 1),
-(11, 2, 2),
-(12, 2, 2);
-select * from pers_role_dept;
-
 
 drop table if exists supplier;
 create table supplier (
